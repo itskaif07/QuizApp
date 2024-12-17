@@ -602,8 +602,16 @@ video {
   top: 6rem;
 }
 
+.top-16 {
+  top: 4rem;
+}
+
 .z-30 {
   z-index: 30;
+}
+
+.z-0 {
+  z-index: 0;
 }
 
 .mx-auto {
@@ -658,6 +666,10 @@ video {
 
 .h-16 {
   height: 4rem;
+}
+
+.h-14 {
+  height: 3.5rem;
 }
 
 .min-h-\[70vh\] {
@@ -718,6 +730,10 @@ video {
 
 .w-2 {
   width: 0.5rem;
+}
+
+.w-14 {
+  width: 3.5rem;
 }
 
 .transform {
@@ -808,6 +824,10 @@ video {
   --tw-space-y-reverse: 0;
   margin-top: calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
+}
+
+.break-words {
+  overflow-wrap: break-word;
 }
 
 .rounded {
