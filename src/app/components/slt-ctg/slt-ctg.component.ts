@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ApiServiceService } from '../../services/api-service.service';
 
 @Component({
   selector: 'app-slt-ctg',
@@ -14,26 +15,28 @@ export class SltCtgComponent implements OnInit {
   categoryId: string = '';
   difficulty:string = '';
   categoryList: any[] = []
-
-  http = inject(HttpClient)
+  isLoading = false;
+  
   route = inject(Router)
+  apiService = inject(ApiServiceService)
 
-  apiUrl: string = `https://opentdb.com/api_category.php`
 
   ngOnInit(): void {
-    // Fetch categories from API
-    this.http.get(this.apiUrl).subscribe({
+    this.isLoading = true;
+    this.apiService.getCategories().subscribe({
       next: (response: any) => {
         if (response && response.trivia_categories) {
           this.categoryList = response.trivia_categories;
-          console.log(response)
+          this.isLoading = false;
         } else {
           this.categoryList = [];
+          this.isLoading = false;
         }
       },
       error: (error) => {
         console.error("Error fetching categories:", error);
         this.categoryList = [];
+        this.isLoading = false;
       }
     });
   }

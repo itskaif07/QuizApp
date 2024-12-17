@@ -1,3 +1,10 @@
+
+@if(isLoading){
+  <div class="h-full w-full fixed flex items-center justify-center text-xl bg-[#222222] z-30">
+    <div class="loader"></div>
+  </div>
+  }
+
 <div class="flex items-center justify-center flex-col min-h-[70vh] text-center space-y-10">
 
     <div class="flex items-center justify-center flex-col space-y-2">
@@ -5,7 +12,6 @@
         <h5>Get ready to test your knowledge, sharpen your skills, and have some fun.
             Are you up for the challenge? Let’s begin! 🚀</h5>
     </div>
-
 
 
     <form (ngSubmit)="onSubmit()" class="space-y-10">
@@ -47,4 +53,3 @@
     </form>
 </div>
 
-<!-- npm run start -->

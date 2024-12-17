@@ -1,4 +1,26 @@
-<div class="w-full h-full min-h-[70vh] flex flex-col items-center justify-center space-y-12">
+@if(isLoading){
+<div class="h-full w-full fixed flex items-center justify-center text-xl bg-[#222222] z-30">
+  <div class="loader"></div>
+</div>
+}
+
+<div
+  class="absolute top-4 left-4 w-12 h-12 rounded-full border border-white bg-[#222222] text-white font-bold flex items-center justify-center"
+  [ngClass]="{'text-green-500': countdownTIme > 5, 'text-red-500': countdownTIme >= 0 && countdownTIme <= 5}">
+  {{countdownTIme}}
+</div>
+
+<button (click)="nextQuestion()"
+  class="w-44 h-10 absolute top-4 right-4 transform hover:scale-105 transition-all duration-150 ease-in bg-blue-500 hover:bg-blue-600 text-white font-medium">
+  Next Question
+</button>
+
+<div
+  class="w-44 h-10 absolute text-lg top-20 right-4 transform hover:scale-105 transition-all duration-150 ease-in bg-[#222222] text-white font-medium flex items-center justify-center">
+  Score: {{points}}
+</div>
+
+<form class="w-full h-full min-h-[70vh] flex flex-col items-center justify-center space-y-12">
 
   <!-- Display the current question using @if to check if we have questions -->
   @if (questions.length > 0) {
@@ -7,22 +29,42 @@
   </h1>
 
   <!-- Display options using @for for the current question -->
-  <div class="flex items-start justify-center flex-col space-y-5">
-    @for (option of questions[currentQuestionIndex]?.options; track $index) {
-    <div class="flex items-center justify-center space-x-5">
-      <input type="radio" [id]="'option-' + $index" name="options" [value]="option" class="cursor-pointer">
-      <h5 class="font-sans font-medium text-green-400 text-center text-lg">{{ option }}</h5>
-    </div>
+  <div class="flex items-center justify-center flex-col space-y-5 w-full">
+    @for (option of options; track $index) {
+      <div tabindex="0"
+     class="flex items-center justify-center space-x-5 bg-white shadow-md w-1/4 py-2 rounded cursor-pointer hover:bg-gray-300 focus:border-4 focus:border-blue-300 focus:rounded"
+     [ngClass]="{
+      'bg-green-500': result === 'correct' && option === correctAnswer || result === 'incorrect',
+      'bg-red-500': result === 'incorrect' && option !== correctAnswer
+    }"
+     (click)="selectedOption(option)">
+  
+  <input type="radio" 
+         [id]="'option-' + $index" 
+         name="options" 
+         [value]="option" 
+         class="appearance-none hidden">
+  
+  <h5 class="font-sans text-black text-center text-lg">{{ option }}</h5>
+</div>
+
+
+      
     }
   </div>
 
   <!-- Button to go to the next question -->
-  <button (click)="nextQuestion()" class="mt-5 px-6 py-2 bg-blue-500 text-white rounded">
-    Next Question
+
+
+  <button (click)="onSubmit()" type="submit" [disabled]="countdownTIme == 0"
+    class="w-96 h-10 transform hover:scale-105 transition-all duration-150 ease-in bg-green-600 hover:bg-green-700 text-white font-medium"
+    [ngClass]="{'pointer-events-none' : countdownTIme == 0, 'bg-green-700' : countdownTIme == 0}">
+    Submit
   </button>
+
   }
   @else {
 
   <h1 class="text-red-500 text-2xl">No questions available.</h1>
   }
-</div>
+</form>
