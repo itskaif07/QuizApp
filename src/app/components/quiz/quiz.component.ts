@@ -103,8 +103,8 @@ export class QuizComponent implements OnInit {
     this.isCorrect ? this.points += 5 : this.points += 0
 
     setTimeout(() => {
-      this.result = ''
       this.nextQuestion()
+      this.result = ''
     }, 1000);
   }
 

@@ -11,7 +11,7 @@ export class ApiServiceService {
   http = inject(HttpClient)
 
   getQuestions(categoryId:string, difficulty:string){
-   return this.http.get(`https://opentdb.com/api.php?amount=10&category=${categoryId}&difficulty=${difficulty}&type=multiple`)
+   return this.http.get(`https://opentdb.com/api.php?amount=20&category=${categoryId}&difficulty=${difficulty}&type=multiple`)
   }
 
   getCategories(){

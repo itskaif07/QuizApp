@@ -15,27 +15,34 @@
   Next Question
 </button>
 
+<div class="w-72 h-10 text-center pl-2 absolute text-lg top-20 right-4 transform hover:scale-105 transition-all duration-150 ease-in bg-[#222222] text-white font-medium flex items-center justify-center">
+  <h1>Q.{{ currentQuestionIndex + 1 }} of 20</h1>
+</div>
+
 <div
-  class="w-44 h-10 absolute text-lg top-20 right-4 transform hover:scale-105 transition-all duration-150 ease-in bg-[#222222] text-white font-medium flex items-center justify-center">
+  class="w-72 h-10 absolute text-lg top-32 right-4 transform hover:scale-105 transition-all duration-150 ease-in bg-[#222222] text-white font-medium flex items-center justify-center">
   Score: {{points}}
 </div>
+
+
 
 <form class="w-full h-full min-h-[70vh] flex flex-col items-center justify-center space-y-12">
 
   <!-- Display the current question using @if to check if we have questions -->
   @if (questions.length > 0) {
   <h1 class="font-mono font-bold text-blue-300 text-xl w-1/2 text-center">
-    Q.{{ currentQuestionIndex + 1 }} {{ questions[currentQuestionIndex]?.question }}
+     {{ questions[currentQuestionIndex]?.question }}
   </h1>
+
 
   <!-- Display options using @for for the current question -->
   <div class="flex items-center justify-center flex-col space-y-5 w-full">
     @for (option of options; track $index) {
       <div tabindex="0"
-     class="flex items-center justify-center space-x-5 bg-white shadow-md w-1/4 py-2 rounded cursor-pointer hover:bg-gray-300 focus:border-4 focus:border-blue-300 focus:rounded"
+     class="flex items-center justify-center hover:bg-gray-300 hover:text-black space-x-5 shadow-md w-1/4 py-2 rounded cursor-pointer focus:border-4 focus:border-blue-300 focus:rounded"
      [ngClass]="{
-      'bg-green-500': result === 'correct' && option === correctAnswer || result === 'incorrect',
-      'bg-red-500': result === 'incorrect' && option === selectedAnswer
+      'bg-green-500': result === 'correct' && option === correctAnswer || (result == 'incorrect' && option === correctAnswer),
+      'bg-red-500': result === 'incorrect' && option === selectedAnswer,
     }"
      (click)="selectedOption(option)">
   
@@ -45,15 +52,13 @@
          [value]="option" 
          class="appearance-none hidden">
   
-  <h5 class="font-sans text-black text-center text-lg">{{ option }}</h5>
+  <h5 class="font-sans text-center text-lg">{{ option }}</h5>
 </div>
 
 
       
     }
   </div>
-
-  <!-- Button to go to the next question -->
 
 
   <button (click)="onSubmit()" type="submit" [disabled]="countdownTIme == 0"
