@@ -59,13 +59,13 @@
 
 
   <button (click)="onSubmit()" type="submit" [disabled]="countdownTIme == 0"
-    class="w-96 h-10 transform hover:scale-105 transition-all duration-150 ease-in bg-green-600 hover:bg-green-700 text-white font-medium"
+    class="w-11/12 lg:w-96 h-10 transform hover:scale-105 transition-all duration-150 ease-in bg-green-600 hover:bg-green-700 text-white font-medium"
     [ngClass]="{'pointer-events-none' : countdownTIme == 0, 'bg-green-700' : countdownTIme == 0}">
     Submit
   </button>
 
   <button (click)="nextQuestion()"
-    class="w-96 h-10 transform hover:scale-105 transition-all duration-150 ease-in bg-blue-500 hover:bg-blue-600 text-white font-medium">
+    class="w-11/12 lg:w-96 h-10 transform hover:scale-105 transition-all duration-150 ease-in bg-blue-500 hover:bg-blue-600 text-white font-medium">
     Next Question
   </button>
 
