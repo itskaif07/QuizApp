@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "poll": 2000,
             "outputPath": "dist/quiz-app",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -92,5 +93,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "5f6ec440-afdf-4a49-a248-90e9d490691b"
   }
 }

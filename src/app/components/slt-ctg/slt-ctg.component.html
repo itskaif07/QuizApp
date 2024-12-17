@@ -1,0 +1,50 @@
+<div class="flex items-center justify-center flex-col min-h-[70vh] text-center space-y-10">
+
+    <div class="flex items-center justify-center flex-col space-y-2">
+        <h1 class="font-bold text-xl font-mono">Welcome to the Ultimate Quiz Challenge! 🎉</h1>
+        <h5>Get ready to test your knowledge, sharpen your skills, and have some fun.
+            Are you up for the challenge? Let’s begin! 🚀</h5>
+    </div>
+
+
+
+    <form (ngSubmit)="onSubmit()" class="space-y-10">
+
+
+        <div class="flex items-start justify-center space-y-3 flex-col">
+            <h1 class="font-medium">Select the category of quiz you want to play</h1>
+            <select [(ngModel)]="categoryId" name="categoryId" class="outline-none w-96 text-black py-1">
+                @for (category of categoryList; track $index) {
+                <option value="{{category.id}}">{{category.name}}</option>
+                }
+            </select>
+        </div>
+
+        <div class="flex items-center justify-center flex-col space-y-4">
+            <h2 class="font-medium">Select Difficulty</h2>
+          
+            <div class="flex items-center justify-center space-x-10">
+              <label>
+                Easy
+                <input type="radio" name="difficulty" value="easy" [(ngModel)]="difficulty">
+              </label>
+              
+              <label>
+                Medium
+                <input type="radio" name="difficulty" value="medium" [(ngModel)]="difficulty">
+              </label>
+              
+              <label>
+                Hard
+                <input type="radio" name="difficulty" value="hard" [(ngModel)]="difficulty">
+              </label>
+            </div>
+          </div>
+          
+
+        <button type="submit"
+            class="bg-blue-600 w-96 h-10 flex items-center justify-center cursor-pointer transform hover:bg-blue-700 hover:scale-105 hover:transition-all duration-500 ease-in">Submit</button>
+    </form>
+</div>
+
+<!-- npm run start -->
