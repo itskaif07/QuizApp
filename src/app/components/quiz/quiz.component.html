@@ -4,24 +4,27 @@
 </div>
 }
 
-<div
-  class="absolute top-4 left-4 w-12 h-12 rounded-full border border-white bg-[#222222] text-white font-bold flex items-center justify-center"
-  [ngClass]="{'text-green-500': countdownTIme > 5, 'text-red-500': countdownTIme >= 0 && countdownTIme <= 5}">
-  {{countdownTIme}}
-</div>
+<div class="flex items-center justify-between px-6 my-6">
+  <div
+    class="lg:absolute top-4 left-4 w-14 h-14 text-xl rounded-full border border-white bg-[#222222] text-white font-bold flex items-center z-0 justify-center"
+    [ngClass]="{'text-green-500': countdownTIme > 5, 'text-red-500': countdownTIme >= 0 && countdownTIme <= 5}">
+    {{countdownTIme}}
+  </div>
 
-<button (click)="nextQuestion()"
-  class="w-44 h-10 absolute top-4 right-4 transform hover:scale-105 transition-all duration-150 ease-in bg-blue-500 hover:bg-blue-600 text-white font-medium">
-  Next Question
-</button>
+  <div
+    class="break-words lg:w-72 lg:h-10 lg:absolute text-lg top-4 right-4 transform hover:scale-105 transition-all duration-150 ease-in bg-[#222222] text-white font-medium flex items-center justify-center">
+    Score: {{points}}
+  </div>
 
-<div class="w-72 h-10 text-center pl-2 absolute text-lg top-20 right-4 transform hover:scale-105 transition-all duration-150 ease-in bg-[#222222] text-white font-medium flex items-center justify-center">
-  <h1>Q.{{ currentQuestionIndex + 1 }} of 20</h1>
-</div>
 
-<div
-  class="w-72 h-10 absolute text-lg top-32 right-4 transform hover:scale-105 transition-all duration-150 ease-in bg-[#222222] text-white font-medium flex items-center justify-center">
-  Score: {{points}}
+
+  <div
+    class="lg:w-72 lg:h-10 text-center pl-2 lg:absolute text-lg top-16 right-4 transform hover:scale-105 transition-all duration-150 ease-in bg-[#222222] text-white font-medium flex items-center justify-center">
+    <h1>Q.{{ currentQuestionIndex + 1 }} of 20</h1>
+  </div>
+
+
+
 </div>
 
 
@@ -30,33 +33,28 @@
 
   <!-- Display the current question using @if to check if we have questions -->
   @if (questions.length > 0) {
-  <h1 class="font-mono font-bold text-blue-300 text-xl w-1/2 text-center">
-     {{ questions[currentQuestionIndex]?.question }}
+  <h1 class="w-11/12 lg:w-1/2 font-mono font-bold text-blue-300 text-xl text-center">
+    {{ questions[currentQuestionIndex]?.question }}
   </h1>
 
 
   <!-- Display options using @for for the current question -->
   <div class="flex items-center justify-center flex-col space-y-5 w-full">
     @for (option of options; track $index) {
-      <div tabindex="0"
-     class="flex items-center justify-center hover:bg-gray-300 hover:text-black space-x-5 shadow-md w-1/4 py-2 rounded cursor-pointer focus:border-4 focus:border-blue-300 focus:rounded"
-     [ngClass]="{
+    <div tabindex="0"
+      class="w-11/12 flex items-center justify-center hover:bg-gray-300 hover:text-black space-x-5 shadow-md lg:w-1/4 py-2 rounded cursor-pointer focus:border-4 focus:border-blue-300 focus:rounded"
+      [ngClass]="{
       'bg-green-500': result === 'correct' && option === correctAnswer || (result == 'incorrect' && option === correctAnswer),
       'bg-red-500': result === 'incorrect' && option === selectedAnswer,
-    }"
-     (click)="selectedOption(option)">
-  
-  <input type="radio" 
-         [id]="'option-' + $index" 
-         name="options" 
-         [value]="option" 
-         class="appearance-none hidden">
-  
-  <h5 class="font-sans text-center text-lg">{{ option }}</h5>
-</div>
+    }" (click)="selectedOption(option)">
+
+      <input type="radio" [id]="'option-' + $index" name="options" [value]="option" class="appearance-none hidden">
+
+      <h5 class="font-sans text-center text-lg">{{ option }}</h5>
+    </div>
 
 
-      
+
     }
   </div>
 
@@ -65,6 +63,11 @@
     class="w-96 h-10 transform hover:scale-105 transition-all duration-150 ease-in bg-green-600 hover:bg-green-700 text-white font-medium"
     [ngClass]="{'pointer-events-none' : countdownTIme == 0, 'bg-green-700' : countdownTIme == 0}">
     Submit
+  </button>
+
+  <button (click)="nextQuestion()"
+    class="w-96 h-10 transform hover:scale-105 transition-all duration-150 ease-in bg-blue-500 hover:bg-blue-600 text-white font-medium">
+    Next Question
   </button>
 
   }
