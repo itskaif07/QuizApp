@@ -7,9 +7,9 @@
 
 <div class="flex items-center justify-center flex-col min-h-[70vh] text-center space-y-10">
 
-    <div class="flex items-center justify-center flex-col space-y-2">
-        <h1 class="font-bold text-xl font-mono">Welcome to the Ultimate Quiz Challenge! 🎉</h1>
-        <h5>Get ready to test your knowledge, sharpen your skills, and have some fun.
+    <div class="flex items-center justify-center flex-col space-y-2 w-11/12 mt-10 lg:mt-0">
+        <h1 class="font-bold text-xl font-mono text-center">Welcome to the Ultimate Quiz Challenge! 🎉</h1>
+        <h5 class="text-center">Get ready to test your knowledge, sharpen your skills, and have some fun.
             Are you up for the challenge? Let’s begin! 🚀</h5>
     </div>
 
@@ -17,9 +17,9 @@
     <form (ngSubmit)="onSubmit()" class="space-y-10">
 
 
-        <div class="flex items-start justify-center space-y-3 flex-col">
-            <h1 class="font-medium">Select the category of quiz you want to play</h1>
-            <select [(ngModel)]="categoryId" name="categoryId" class="outline-none w-96 text-black py-1">
+        <div class="w-full flex items-start justify-center space-y-3 flex-col mx-auto">
+            <h1 class="font-medium max-[400px]:w-11/12 mx-auto">Select the category of quiz you want to play</h1>
+            <select [(ngModel)]="categoryId" name="categoryId" class="outline-none w-96 text-black py-1 max-[400px]:w-11/12 mx-auto">
                 @for (category of categoryList; track $index) {
                 <option value="{{category.id}}">{{category.name}}</option>
                 }
@@ -49,7 +49,7 @@
           
 
         <button type="submit"
-            class="bg-blue-600 w-96 h-10 flex items-center justify-center cursor-pointer transform hover:bg-blue-700 hover:scale-105 hover:transition-all duration-500 ease-in">Submit</button>
+            class="bg-blue-600 max-[400px]:w-11/12 mx-auto w-96 h-10 flex items-center justify-center cursor-pointer transform hover:bg-blue-700 hover:scale-105 hover:transition-all duration-500 ease-in">Submit</button>
     </form>
 </div>
 

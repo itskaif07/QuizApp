@@ -28,30 +28,30 @@
 }
 
 @else if (points >= 45 && points < 50) {
-  <h1 class="font-medium w-1/2 text-center text-lg font-mono">
+  <h1 class="font-medium w-4/5 sm:w-3/4 md:w-3/5 text-center text-lg font-mono">
     Oof! You were so close to getting those extra points, but you missed the mark. You’re on the right track, but it’s time to hit the books harder before the next quiz. Every point counts! 💪📚
   </h1>
 }
 
 @else if (points >= 25 && points < 45) {
-  <h1 class="font-medium w-1/2 text-center text-lg font-mono">
+  <h1 class="font-medium w-4/5 sm:w-3/4 md:w-3/5 text-center text-lg font-mono">
     So close, yet so far! You’ve got a few right answers, but some tricky ones still slipped you by. You’re definitely showing potential, but next time, let's aim for the top! Keep pushing, you're almost there! 💪📚
   </h1>
 }
 
 @else if (points > 0 && points < 25) {
-  <h1 class="font-medium w-1/2 text-center text-lg font-mono">
+  <h1 class="font-medium w-4/5 sm:w-3/4 md:w-3/5 text-center text-lg font-mono">
     😂 Ouch! {{points}} points? You didn’t even try, did you? The quiz probably started wondering if you were even paying attention. You’re barely scraping by, but hey, it’s all about learning! Time to level up and give it a real shot next time! 🤦‍♂️
   </h1>
 }
 
 @else if (points === 0) {
-  <h1 class="font-medium w-1/2 text-center text-lg font-mono">
+  <h1 class="font-medium w-4/5 sm:w-3/4 md:w-3/5 text-center text-lg font-mono">
     😂 Zero! Not a single point? You didn’t even try, did you? The quiz was probably more confused by your lack of answers than you were by the questions. Seriously, you didn’t just fail, you obliterated your chance to pass. At this rate, I’m wondering if you even knew there was a quiz. Next time, try to at least pretend to care. 🤦‍♂️
   </h1>
 }
 
 
-    <a routerLink="/slt-ctg" class="w-1/5 bg-blue-500 rounded h-12 font-sans font-semibold text-lg  flex items-center justify-center transform hover:bg-blue-700 hover:scale-105 hover:transition-all duration-500 ease-in">Home</a>
+    <a routerLink="/slt-ctg" class="w-4/5 sm:w-1/2 xl:w-1/4 bg-blue-500 rounded h-12 font-sans font-semibold text-lg  flex items-center justify-center transform hover:bg-blue-700 hover:scale-105 hover:transition-all duration-500 ease-in">Home</a>
   </div>
   
