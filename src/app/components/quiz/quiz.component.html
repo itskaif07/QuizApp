@@ -35,7 +35,7 @@
      class="flex items-center justify-center space-x-5 bg-white shadow-md w-1/4 py-2 rounded cursor-pointer hover:bg-gray-300 focus:border-4 focus:border-blue-300 focus:rounded"
      [ngClass]="{
       'bg-green-500': result === 'correct' && option === correctAnswer || result === 'incorrect',
-      'bg-red-500': result === 'incorrect' && option !== correctAnswer
+      'bg-red-500': result === 'incorrect' && option === selectedAnswer
     }"
      (click)="selectedOption(option)">
   

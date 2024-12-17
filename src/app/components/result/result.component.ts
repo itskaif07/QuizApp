@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-result',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './result.component.html',
   styleUrl: './result.component.css'
 })
