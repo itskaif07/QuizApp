@@ -994,6 +994,10 @@ video {
 }
 
 @media (max-width: 400px) {
+  .max-\[400px\]\:min-h-screen {
+    min-height: 100vh;
+  }
+
   .max-\[400px\]\:w-11\/12 {
     width: 91.666667%;
   }
