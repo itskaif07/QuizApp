@@ -48,6 +48,10 @@ export class QuizComponent implements OnInit {
           this.questions = [];
           this.isLoading = false;
         }
+      }, (err)=>{
+        this.isLoading = false;
+        this.questions = []
+        console.log(err)
       });
     });
 
@@ -77,6 +81,7 @@ export class QuizComponent implements OnInit {
       this.isLoading = false
     }
     else{
+      this.isLoading = false
       this.onComplete()
     }
 
