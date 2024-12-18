@@ -1174,6 +1174,12 @@ video {
   .lg\:w-44 {
     width: 11rem;
   }
+
+  .lg\:space-x-10 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(2.5rem * var(--tw-space-x-reverse));
+    margin-left: calc(2.5rem * calc(1 - var(--tw-space-x-reverse)));
+  }
 }
 
 @media (min-width: 1280px) {
