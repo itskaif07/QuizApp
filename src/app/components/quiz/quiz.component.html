@@ -27,7 +27,7 @@
 
 
 
-<form class="w-full h-full max-[400px]:min-h-screen  min-h-[70vh] flex flex-col items-center justify-center space-y-12">
+<form class="w-full h-full max-[400px]:min-h-[90vh]  min-h-[70vh] flex flex-col items-center justify-center space-y-12">
 
   <!-- Display the current question using @if to check if we have questions -->
   @if (questions.length > 0) {
@@ -63,12 +63,12 @@
   </button>
 
   <button (click)="nextQuestion()"
-    class="w-11/12 lg:w-44 lg:absolute right-4 bottom-4 h-10  transform hover:scale-105 transition-all duration-150 ease-in bg-yellow-500 hover:bg-yellow-600 text-white font-medium">
+    class="w-11/12 lg:w-44 lg:absolute right-4 bottom-4 h-10  transform hover:scale-105 transition-all duration-150 ease-in bg-blue-500 hover:bg-blue-600 lg:bg-yellow-500 lg:hover:bg-yellow-600 text-white font-medium">
     Next Question
   </button>
   
   <button routerLink=""
-  class="w-11/12 lg:w-44 lg:absolute left-4 bottom-4 h-10 transform hover:scale-105 transition-all duration-150 ease-in bg-blue-500 hover:bg-blue-600 text-white font-medium">
+  class="w-11/12 lg:w-44 hidden lg:flex items-center justify-center lg:absolute left-4 bottom-4 h-10 transform hover:scale-105 transition-all duration-150 ease-in bg-blue-500 hover:bg-blue-600 text-white font-medium">
   Home
 </button>
 </div>
