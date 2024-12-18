@@ -4,7 +4,7 @@
 </div>
 }
 
-<div class="flex items-center justify-between px-6 my-6 max-[400px]:px-1">
+<div class="flex items-center justify-between px-6 mt-6 mb-2 lg:mb-6 max-[400px]:px-1">
   <div
     class="lg:absolute top-14 left-4 max-[400px]:w-12 max-[400px]:h-12 w-16 h-16 max-[400px]:text-xl text-2xl rounded-full border border-white bg-[#222222] font-bold flex items-center z-0 justify-center"
     [ngClass]="{'text-green-500': countdownTIme > 5, 'text-red-500': countdownTIme >= 0 && countdownTIme <= 5}">
@@ -22,8 +22,6 @@
     class="lg:w-72 lg:h-10 text-center pl-2 lg:absolute max-[400px]:text-lg text-xl font-bold top-24 right-4 transform hover:scale-105 transition-all duration-150 ease-in bg-[#222222] text-white  flex items-center justify-end">
     <h1>Q.{{ currentQuestionIndex + 1 }} of 20</h1>
   </div>
-
-
 
 </div>
 
