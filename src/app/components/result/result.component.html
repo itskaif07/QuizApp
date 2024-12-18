@@ -10,43 +10,43 @@
     <!-- Display different messages based on points -->
   <!-- Display different messages based on points -->
 @if (points === 100) {
-  <h1 class="font-medium w-1/2 text-center text-lg font-mono">
+  <h1 class="font-medium w-4/5 sm:w-3/4 md:w-3/5 text-justify text-lg font-mono">
     🎉 50/50! You didn’t just ace it—you obliterated it! If there was a quiz Olympics, you’d be walking home with gold. I’m honestly starting to suspect you have some sort of secret cheat code. 🏅💯
   </h1>
 }
 
 @else if (points >= 75 && points <= 95) {
-  <h1 class="font-medium w-1/2 text-center text-lg font-mono">
+  <h1 class="font-medium w-4/5 sm:w-3/4 md:w-3/5 text-justify text-lg font-mono">
     Almost perfect, but it’s like you tripped over the finish line. You could’ve nailed it if you just focused for 5 more seconds. Still, you're clearly in the top tier. Keep it up, quiz master! 💪😜
   </h1>
 }
 
 @else if (points >= 50 && points <= 70) {
-  <h1 class="font-medium w-1/2 text-center text-lg font-mono">
+  <h1 class="font-medium w-4/5 sm:w-3/4 md:w-3/5 text-justify text-lg font-mono">
     Not bad! You’ve got the basics down, but there's room for improvement. It's like you got halfway through, but then distracted yourself with something shiny. Time to focus and polish those skills! You’ve got this! 😆🍔
   </h1>
 }
 
 @else if (points >= 45 && points < 50) {
-  <h1 class="font-medium w-4/5 sm:w-3/4 md:w-3/5 text-center text-lg font-mono">
+  <h1 class="font-medium w-4/5 sm:w-3/4 md:w-3/5 text-justify text-lg font-mono">
     Oof! You were so close to getting those extra points, but you missed the mark. You’re on the right track, but it’s time to hit the books harder before the next quiz. Every point counts! 💪📚
   </h1>
 }
 
 @else if (points >= 25 && points < 45) {
-  <h1 class="font-medium w-4/5 sm:w-3/4 md:w-3/5 text-center text-lg font-mono">
+  <h1 class="font-medium w-4/5 sm:w-3/4 md:w-3/5 text-justify text-lg font-mono">
     So close, yet so far! You’ve got a few right answers, but some tricky ones still slipped you by. You’re definitely showing potential, but next time, let's aim for the top! Keep pushing, you're almost there! 💪📚
   </h1>
 }
 
 @else if (points > 0 && points < 25) {
-  <h1 class="font-medium w-4/5 sm:w-3/4 md:w-3/5 text-center text-lg font-mono">
+  <h1 class="font-medium w-4/5 sm:w-3/4 md:w-3/5 text-justify text-lg font-mono">
     😂 Ouch! {{points}} points? You didn’t even try, did you? The quiz probably started wondering if you were even paying attention. You’re barely scraping by, but hey, it’s all about learning! Time to level up and give it a real shot next time! 🤦‍♂️
   </h1>
 }
 
 @else if (points === 0) {
-  <h1 class="font-medium w-4/5 sm:w-3/4 md:w-3/5 text-center text-lg font-mono">
+  <h1 class="font-medium w-4/5 sm:w-3/4 md:w-3/5 text-justify text-lg font-mono">
     😂 Zero! Not a single point? You didn’t even try, did you? The quiz was probably more confused by your lack of answers than you were by the questions. Seriously, you didn’t just fail, you obliterated your chance to pass. At this rate, I’m wondering if you even knew there was a quiz. Next time, try to at least pretend to care. 🤦‍♂️
   </h1>
 }

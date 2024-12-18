@@ -1,20 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { ChangeDetectorRef, Component, inject, Inject, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ApiServiceService } from '../../services/api-service.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-quiz',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './quiz.component.html',
   styleUrl: './quiz.component.css',
   standalone: true
 })
 export class QuizComponent implements OnInit {
 
-  constructor(private cdRef: ChangeDetectorRef){}
 
   categoryId: string = '';
   difficulty: string = '';
@@ -27,6 +27,12 @@ export class QuizComponent implements OnInit {
   route = inject(ActivatedRoute);
   navigator = inject(Router)
   apiService = inject(ApiServiceService);
+  sanitizer = inject(DomSanitizer)
+
+  decodeHtml(encodedString: string): string {
+    const doc = new DOMParser().parseFromString(encodedString, 'text/html');
+    return doc.documentElement.textContent || '';
+  }
 
 
   ngOnInit(): void {
@@ -40,7 +46,12 @@ export class QuizComponent implements OnInit {
 
       this.apiService.getQuestions(this.categoryId, this.difficulty).subscribe((res: any) => {
         if (res && Array.isArray(res.results)) {
-          this.questions = res.results;
+          // Decode HTML entities in each question
+          this.questions = res.results.map((q: any) => {
+            q.question = this.decodeHtml(q.question);
+            return q;
+          });
+      
           this.provideOptions()
           this.startTimer()
           this.isLoading = false
@@ -58,13 +69,22 @@ export class QuizComponent implements OnInit {
   }
 
  
-
   provideOptions() {
     const currentQuestion = this.questions[this.currentQuestionIndex];
-    this.options = [...currentQuestion.incorrect_answers, currentQuestion.correct_answer]
-    this.options = this.shuffleOptions(this.options)
-    this.correctAnswer = currentQuestion.correct_answer
+    
+    // Decode and prepare options
+    const decodedIncorrectAnswers = currentQuestion.incorrect_answers.map((answer: string) => this.decodeHtml(answer));
+    const decodedCorrectAnswer = this.decodeHtml(currentQuestion.correct_answer);
+  
+    this.options = [...decodedIncorrectAnswers, decodedCorrectAnswer];
+  
+    // Shuffle the decoded options
+    this.options = this.shuffleOptions(this.options);
+  
+    // Store the correct answer
+    this.correctAnswer = decodedCorrectAnswer;
   }
+  
 
   shuffleOptions(options: string[]): string[] {
     return options.sort(() => Math.random() - 0.5)
